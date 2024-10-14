@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Providers } from "../provider";
+import AppbarClient from "../components/AppbarClient";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,9 +26,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <Head>
+      <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+     />
+      </Head>
+     
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-zinc-950`}>
+      <Providers>
+          <div>
+           <AppbarClient/>
+          </div>
         {children}
+        </Providers>
       </body>
+    
     </html>
   );
 }
